@@ -1,0 +1,17 @@
+target/
+*.class
+*.jar
+*.war
+.git/
+.gitignore
+.gitattributes
+.idea/
+.vscode/
+*.iml
+*.md
+*.log
+Dockerfile
+.dockerignore
+audit_session.log
+FORENSIC_REPORT.md
+taller_docker_semana13.zip
