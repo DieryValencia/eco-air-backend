@@ -1,164 +1,28 @@
-﻿=== SESION DE AUDITORIA FORENSE - eco-air-backend ===
-STUDENT_ID inyectado: 1193522218
-Fecha: 2026-10-21T11:42:48.4233565-05:00
-Entorno: Windows 11 + Docker Desktop (Linux engine) 29.3.1
-===== RETO 1 - CONSTRUCCION MULTIETAPA =====
+﻿**********************
+Inicio de la transcripción de Windows PowerShell
+Hora de inicio: 20261021175144
+Nombre de usuario: DIERYVALENCIA\diery
+Usuario RunAs: DIERYVALENCIA\diery
+Nombre de la configuración: 
+Máquina: DIERYVALENCIA (Microsoft Windows NT 10.0.26300.0)
+Aplicación host: C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.exe
+Id. de proceso: 3172
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+La transcripción ha comenzado. El archivo de salida es .\audit_session.log
+PS C:\Users\diery\OneDrive\6.semestre\POO\tallersemana13\eco-air-backend> docker exec eco_air_active env
 
-$ docker build --build-arg STUDENT_ID="1193522218" -t eco-air-backend:1.0.0 .
-#0 building with "desktop-linux" instance using docker driver
+PS C:\Users\diery\OneDrive\6.semestre\POO\tallersemana13\eco-air-backend> docker stats --no-stream eco_air_active
 
-#1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile: 1.76kB 0.0s done
-#1 DONE 0.0s
-
-#2 resolve image config for docker-image://docker.io/docker/dockerfile:1
-#2 DONE 1.0s
-
-#3 docker-image://docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e
-#3 resolve docker.io/docker/dockerfile:1@sha256:4edf897a3ffa55b89f906fc8cc78afdb3f1834cc9c7083565e611a8a7d5fe99e 0.0s done
-#3 CACHED
-
-#4 [internal] load metadata for docker.io/library/maven:3.9.6-eclipse-temurin-17-alpine
-#4 DONE 0.6s
-
-#5 [internal] load metadata for docker.io/library/eclipse-temurin:17-jre-alpine
-#5 DONE 0.6s
-
-#6 [internal] load .dockerignore
-#6 transferring context: 224B done
-#6 DONE 0.0s
-
-#7 [internal] load build context
-#7 DONE 0.0s
-
-#8 [stage-1 1/5] FROM docker.io/library/eclipse-temurin:17-jre-alpine@sha256:3c472129dc75a8d1d7a3f2df5b2093a8077e4493deff046754d4764d0371de63
-#8 resolve docker.io/library/eclipse-temurin:17-jre-alpine@sha256:3c472129dc75a8d1d7a3f2df5b2093a8077e4493deff046754d4764d0371de63
-#8 resolve docker.io/library/eclipse-temurin:17-jre-alpine@sha256:3c472129dc75a8d1d7a3f2df5b2093a8077e4493deff046754d4764d0371de63 0.1s done
-#8 DONE 0.1s
-
-#9 [builder 1/6] FROM docker.io/library/maven:3.9.6-eclipse-temurin-17-alpine@sha256:ffddac7b04101358048f872fba9d978b2a1f9647955d158c1e565233cb95577d
-#9 resolve docker.io/library/maven:3.9.6-eclipse-temurin-17-alpine@sha256:ffddac7b04101358048f872fba9d978b2a1f9647955d158c1e565233cb95577d 0.1s done
-#9 DONE 0.1s
-
-#7 [internal] load build context
-#7 transferring context: 759B 0.0s done
-#7 DONE 0.0s
-
-#10 [builder 5/6] COPY src ./src
-#10 CACHED
-
-#11 [stage-1 2/5] RUN addgroup -g 10001 sensorgroup &&     adduser -u 10001 -G sensorgroup -s /bin/sh -D sensor_user
-#11 CACHED
-
-#12 [stage-1 4/5] COPY --from=builder /build/target/eco-air-backend.jar /app/eco-air-backend.jar
-#12 CACHED
-
-#13 [builder 6/6] RUN mvn package -DskipTests -B
-#13 CACHED
-
-#14 [builder 2/6] WORKDIR /build
-#14 CACHED
-
-#15 [builder 3/6] COPY pom.xml .
-#15 CACHED
-
-#16 [stage-1 3/5] WORKDIR /app
-#16 CACHED
-
-#17 [builder 4/6] RUN mvn dependency:go-offline -B
-#17 CACHED
-
-#18 [stage-1 5/5] RUN chown -R sensor_user:sensorgroup /app
-#18 CACHED
-
-#19 exporting to image
-#19 exporting layers 0.0s done
-#19 exporting manifest sha256:52aa350e8ef66bdbea944edff50d4d3d0deaa53bd3f5f45aca6ca11cf8023843 done
-#19 exporting config sha256:2a9bd1dfda2935ea6a66bb746282843532e9e7debd292a68af061ab1863473a7 done
-#19 exporting attestation manifest sha256:a88576042cd4fc4cfee8b0ee6cd4d10803f4b65924aa5c98d1c690e88517b894 0.1s done
-#19 exporting manifest list sha256:67f93db4f9a9481477e0da9d1f0d5db8f3faa2ea5b97b9e6a4f952a48043bfa3
-#19 exporting manifest list sha256:67f93db4f9a9481477e0da9d1f0d5db8f3faa2ea5b97b9e6a4f952a48043bfa3 0.0s done
-#19 naming to docker.io/library/eco-air-backend:1.0.0 done
-#19 unpacking to docker.io/library/eco-air-backend:1.0.0 0.0s done
-#19 DONE 0.3s
-
-$ docker history --human --format "table {{.Size}}\t{{.CreatedBy}}" eco-air-backend:1.0.0
-SIZE      CREATED BY
-0B        ENTRYPOINT ["java" "-jar" "/app/eco-air-backÔÇª
-0B        USER sensor_user
-47MB      RUN |1 STUDENT_ID=1193522218 /bin/sh -c chowÔÇª
-47MB      COPY /build/target/eco-air-backend.jar /app/ÔÇª
-8.19kB    WORKDIR /app
-41kB      RUN |1 STUDENT_ID=1193522218 /bin/sh -c addgÔÇª
-0B        ENV OPERATOR_ID=1193522218 JAVA_TOOL_OPTIONSÔÇª
-0B        ARG STUDENT_ID=1193522218
-0B        ENTRYPOINT ["/__cacert_entrypoint.sh"]
-12.3kB    COPY --chmod=755 entrypoint.sh /__cacert_entÔÇª
-12.3kB    RUN /bin/sh -c set -eux;     echo "VerifyingÔÇª
-141MB     RUN /bin/sh -c set -eux;     ARCH="$(apk --pÔÇª
-0B        ENV JAVA_VERSION=jdk-17.0.20.1+1
-44MB      RUN /bin/sh -c set -eux;     apk add --no-caÔÇª
-0B        ENV LANG=en_US.UTF-8 LANGUAGE=en_US:en LC_ALÔÇª
-0B        ENV PATH=/opt/java/openjdk/bin:/usr/local/sbÔÇª
-0B        ENV JAVA_HOME=/opt/java/openjdk
-0B        CMD ["/bin/sh"]
-9.08MB    ADD alpine-minirootfs-3.24.2-x86_64.tar.gz /ÔÇª
-
-$ docker inspect --format="{{.Id}}" eco-air-backend:1.0.0
-sha256:67f93db4f9a9481477e0da9d1f0d5db8f3faa2ea5b97b9e6a4f952a48043bfa3
-
-$ docker inspect --format="{{json .RootFS.Layers}}" eco-air-backend:1.0.0
-["sha256:74d97c428c51a828f9051a7a40a53ff1fc99e54fc30323ce36760701b0b7f711","sha256:a152dfd2607b01e7c5b933b98da8c746ed0bd242e4f544ff3afd656fdfc7c7a1","sha256:b9398a5bcfd34ada6c3760ac870b064bf54fb191a502393cbb6a3088f8c9be5b","sha256:76b42b7b749e5cf63c4ef5fe61a878a5f508733d81f12305b29e6320007a49de","sha256:6c0c03120c42828b5d975a2b84e53a9ca0ed58b0b0dab9b6c79f5516ddabce2c","sha256:004589a481a5477a6c9189e53f708aab3c617a4176403f11755fe428e299b189","sha256:87f14b0f80e1cbef4e7162e6a09abe32bd4415de000709a06950034b3c7c2563","sha256:72d15e488914f157922b34a52395287554f439acc88db3338be96568058c79d7","sha256:a2c269a519677c9a600e79ec46f6a82b34c3fdb320d7ef762d9be713104ee2a4"]
-===== RETO 2 - AUDITORIA FORENSE =====
-
-$ docker run -d --name eco_air_active -p 8080:8080 eco-air-backend:1.0.0
-00171784812a189e6cad5789145fec7bfea29d22ce14334297ecd608b64bc439
-
-$ docker top eco_air_active -o pid,user,comm
-PID                 USER                COMMAND
-7735                10001               java
-
-$ docker exec eco_air_active touch /etc/crontab_fake
-touch: cannot touch '/etc/crontab_fake': Permission denied
-
-$ docker exec eco_air_active which mvn
-
-$ docker exec eco_air_active find / -name "*.java"
-find: /root: Permission denied
-find: /proc/tty/driver: Permission denied
-
-$ docker exec eco_air_active env | findstr OPERATOR_ID
-OPERATOR_ID=1193522218
-
-$ docker logs --timestamps --tail 6 eco_air_active
-2026-10-21T16:43:02.075866734Z 2026-10-21T16:43:02.075Z  INFO 1 --- [eco-air-backend] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
-2026-10-21T16:43:03.599714843Z 2026-10-21T16:43:03.598Z  INFO 1 --- [eco-air-backend] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2026-10-21T16:43:03.723478908Z 2026-10-21T16:43:03.722Z  INFO 1 --- [eco-air-backend] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2026-10-21T16:43:04.354464323Z 2026-10-21T16:43:04.353Z  WARN 1 --- [eco-air-backend] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2026-10-21T16:43:05.042358015Z 2026-10-21T16:43:05.041Z  INFO 1 --- [eco-air-backend] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
-2026-10-21T16:43:05.069580604Z 2026-10-21T16:43:05.068Z  INFO 1 --- [eco-air-backend] [           main] com.ecoair.EcoAirApplication             : Started EcoAirApplication in 9.191 seconds (process running for 10.185)
-===== RETO 3.1 - INDUCCION DE OOM (48 MB) =====
-
-$ docker run -d --name eco_air_crash -m 48m eco-air-backend:1.0.0
-2e255cb532d90377e5e70c78cdf7d96a3470e99db60a484dfd14e0b6b31b5044
-espera de 70 segundos...
-
-$ docker inspect eco_air_crash --format="Status: {{.State.Status}} | ExitCode: {{.State.ExitCode}} | OOMKilled: {{.State.OOMKilled}}"
-Status: exited | ExitCode: 137 | OOMKilled: true
-
-$ docker logs --timestamps --tail 6 eco_air_crash
-2026-10-21T16:43:14.951842549Z  :: Spring Boot ::                (v3.2.5)
-2026-10-21T16:43:14.951934814Z 
-2026-10-21T16:43:15.769422931Z 2026-10-21T16:43:15.665Z  INFO 1 --- [eco-air-backend] [           main] com.ecoair.EcoAirApplication             : Starting EcoAirApplication v1.0.0 using Java 17.0.20.1 with PID 1 (/app/eco-air-backend.jar started by sensor_user in /app)
-2026-10-21T16:43:15.809750939Z 2026-10-21T16:43:15.808Z  INFO 1 --- [eco-air-backend] [           main] com.ecoair.EcoAirApplication             : No active profile set, falling back to 1 default profile: "default"
-2026-10-21T16:43:24.305877028Z 2026-10-21T16:43:24.230Z  INFO 1 --- [eco-air-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2026-10-21T16:43:25.981390866Z 2026-10-21T16:43:25.948Z  INFO 1 --- [eco-air-backend] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1223 ms. Found 1 JPA repository interface.
-
-$ docker stats --no-stream eco_air_crash
-CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT   MEM %     NET I/O   BLOCK I/O   PIDS
-2e255cb532d9   eco_air_crash   0.00%     0B / 0B             0.00%     0B / 0B   0B / 0B     0
-===== RETO 3.2 - CALIBRACION DEL LIMITE MINIMO DE MEMORIA =====
------ limite -m 512m -----
-
-$ docker run -d --name eco_air_active -p 8080:8080 -m 512m eco-air-backend:1.0.0
-6f3d0e363aa7eb562b5f76eaae5fd4f93c7c89ccaed4a43503c11269496b8c76
+PS C:\Users\diery\OneDrive\6.semestre\POO\tallersemana13\eco-air-backend> Start-Transcript -Path .\audit_session.log
+**********************
+Fin de la transcripción de Windows PowerShell
+Hora de finalización: 20261021175550
+**********************
